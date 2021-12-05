@@ -1,0 +1,200 @@
+
+body{font-family: 'Noto Sans KR', sans-serif; font-size: 16px;}
+.en {font-family: 'Roboto', sans-serif;}
+.inner{width: 1220px; max-width: 100%; box-sizing: border-box; margin: 0 auto; padding:0 15px;}
+.primary{color:#FFC107;}
+.primary-btn{display: block; padding: 10px; box-sizing: border-box; border:none; background:#FFC107; border-radius:10px ; -webkit-border-radius:10px ; -moz-border-radius:10px ; -ms-border-radius:10px ; -o-border-radius:10px; font-size: 16px;  cursor: pointer;}
+.bd{ border-radius:10px ; -webkit-border-radius:10px ; -moz-border-radius:10px ; -ms-border-radius:10px ; -o-border-radius:10px ;}
+#app>div{min-height: 100vh;}
+/* header */
+header{
+    padding: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+header .inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo a{
+    font-size: 50px;
+    color:#FFC107;
+}
+.haader-list{
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.haader-list li a{
+    display: block;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+/* active */
+.haader-list li .router-link-active{
+    background-color: #FFC107;
+}
+
+
+/* 검색폼 */
+.search-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.search-input{
+    padding: 12px;
+    border: 1px solid #ddd;
+    width: 70%;
+    box-sizing: border-box;
+}
+.search-input:focus,
+select:focus{
+    box-shadow: 0 0 10px rgba(253, 216, 53, 1);
+     outline: none;
+}
+.selects{
+    width: 10%;
+    margin: 0 1rem;
+}
+.selects select{
+    width: 100%;
+    padding:10px;
+    border: 1px solid #ddd;
+    border-radius:10px;
+    background:url(../images/arrow.png) no-repeat;
+    background-position: right 5px center;
+    background-size: 10px auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+}
+select::-ms-expand {
+    display: none;
+ }
+.search-btn{margin-left: auto; width: 20%;}
+
+/* 리스트 */
+.empty{
+    background-color: #FFD54F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* 리스트 있을 때 */
+.sticker-items{
+    background-color: #eee;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.sticker-item{
+    position: relative;
+    width: 200px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.sticker-item .stickers{
+    display: block;
+    border: 5px solid #FFD54F;
+    box-sizing: border-box;
+}
+.sticker-item .stickers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+.sticker-item .stickers img{
+    width: 100%;
+    height: 100%;
+}
+.sticker-item .des{
+    background-color: #FFD54F;
+    margin-top: 5px;
+    padding: 7px;
+    box-sizing: border-box;
+}
+.sticker-item .tag{
+    position: absolute;
+    right: 10px;
+    top:10px;
+    width: 30px;
+    height: 30px;
+    z-index: 100;
+    cursor: pointer;
+}
+.sticker-item .tag.add{
+    background: url(../images/plus.png) no-repeat;
+    background-size: cover;
+}
+.sticker-item .tag.remove{
+    background: url(../images/remove.png) no-repeat;
+    background-size: cover;
+}
+.sticker-item .username{
+    text-align: right;
+    color:rgb(53, 43, 43);
+    font-size: 12px;
+}
+/* 검색어 */
+.search-list{
+    margin: 12px 0;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+.search-list h3{
+    background-color: #4FC3F7;
+    padding: 7px;
+    box-sizing: border-box;
+}
+.search-list li{
+    background-color: #fff;
+    padding: 7px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+}
+/* 더보기 버튼 */
+.more-btn{
+    margin: 20px 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 900px){
+    .search-form{
+        flex-wrap: wrap;
+    }
+    .search-input{
+        width: 100%;
+    }
+    .search-form button,
+    .selects{width: 47%; margin: 1%;}
+}
+@media screen and (max-width: 400px){
+    .logo,.inner .search-header.en{
+        font-size: 25px;
+    }
+}
