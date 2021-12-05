@@ -13,7 +13,7 @@ export default {};
 <style>
 .lds-facebook {
   display: inline-block;
-  position: absolute;
+  position: fixed;
   width: 64px;
   height: 64px;
   top: 50%;

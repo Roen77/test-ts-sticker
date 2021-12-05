@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev:netlify": "netlify dev",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
@@ -35,6 +36,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
+    "netlify-cli": "^8.0.15",
     "prettier": "^2.2.1",
     "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"

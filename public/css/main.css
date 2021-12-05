@@ -106,7 +106,7 @@ select::-ms-expand {
 }
 .sticker-item{
     position: relative;
-    width: 200px;
+    width: auto;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
