@@ -10,7 +10,7 @@ const API_KEY = "3veitOn3rVMzPMduGVEOxl31SHXXSfc1";
 export const search = {
   // 검색
   fetchs(searchData: string, limit: string, offset = 0): AxiosPromise<stickerItem> {
-    return axios.post("/.netlify/functions/sticker", { searchData, limit, offset });
+    return axios.post(".netlify/functions/sticker", { searchData, limit, offset });
   },
   fetch(id: number): AxiosPromise<sticker> {
     return instance.get(`gifs/${id}?api_key=${API_KEY}`);

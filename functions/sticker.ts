@@ -1,8 +1,8 @@
 import { Handler } from "@netlify/functions";
 import axios from "axios";
 const handler: Handler = async (event) => {
-  console.log("여기도안되나");
   const payload = JSON.parse(event.body);
+  console.log(payload, "바디좀");
   const { searchData, limit, offset } = payload;
   const instance = await axios.create({
     baseURL: "https://api.giphy.com/v1/",
