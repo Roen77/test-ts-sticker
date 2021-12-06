@@ -2,7 +2,6 @@ import { Handler } from "@netlify/functions";
 import axios from "axios";
 const handler: Handler = async (event) => {
   const payload = JSON.parse(event.body);
-  console.log(payload, "바디좀");
   const { searchData, limit } = payload;
   const instance = await axios.create({
     baseURL: "https://api.giphy.com/v1/",
@@ -11,7 +10,6 @@ const handler: Handler = async (event) => {
   const url = `tags/related/${searchData}?api_key=${API_KEY}&limit=${limit}&rating=g`;
   try {
     const { data } = await instance.get(url);
-    console.log(payload, data, "확인좀");
     if (data.meta.status === 400 || data.meta.status === 404) {
       return {
         statusCode: 400,

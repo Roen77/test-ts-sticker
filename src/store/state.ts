@@ -1,7 +1,6 @@
 import { keywordType, sticker } from "@/type";
 const STORAGE_KEY = "STICKER-TAGlIST";
 const getTagList = JSON.parse(localStorage.getItem(STORAGE_KEY) as string);
-console.log(JSON.parse(localStorage.getItem(STORAGE_KEY) as string), "스토리지좀");
 export type State = {
   lists: sticker[];
   tagList: sticker[];

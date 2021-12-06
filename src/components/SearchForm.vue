@@ -55,7 +55,6 @@ export default defineComponent({
     const keywordList = computed(() => store.state.keywordsList);
 
     const fetchList = (inputValue: string) => {
-      console.log("submit", inputValue, "인푸좀");
       store.dispatch(ActionTypes.FETCH_SEARCH, {
         searchData: inputValue,
         limit: currentFilter.value,
@@ -71,7 +70,6 @@ export default defineComponent({
     };
 
     const getKeywordList = () => {
-      console.log(decodeURIComponent(search.value));
       store.dispatch(ActionTypes.FETCH_KEYWORD, {
         searchData: search.value,
         limit: "5",

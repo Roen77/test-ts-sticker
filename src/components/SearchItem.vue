@@ -11,6 +11,25 @@
     <span v-if="!ischeck" class="tag add" @click.prevent="onSaveList"></span>
     <span v-else class="tag remove" @click.prevent="onRemoveList"></span>
   </div>
+  <div v-if="list.user" class="user-info" :class="{ active: isActive }">
+    <div>
+      <div class="user-header">
+        <img v-if="list.user.avatar_url" :src="list.user.avatar_url" alt="#" />
+        <div>
+          <p>{{ list.user.username }}</p>
+        </div>
+      </div>
+      <div class="description">
+        {{ format() }}
+      </div>
+      <div class="social">
+        <div v-if="list.user.instagram_url" class="instar">
+          <a :href="list.user.instagram_url" target="_blank"></a>
+        </div>
+        <a v-if="list.user.website_url" :href="list.user.website_url" target="_blank"></a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -30,12 +49,19 @@ export default defineComponent({
   setup(props) {
     const tagList = computed(() => store.state.tagList);
     const ischeck = ref(false);
+    const isActive = ref(false);
     const route = useRoute();
+
+    const format = () => {
+      const des = props.list.user && props.list.user.description;
+      const desFomat = des.split("");
+      if (desFomat.length < 100) return des;
+      else return `${desFomat.splice(0, 101).join("")}...`;
+    };
     const checktagList = () => {
       const findvalue = tagList.value.find((tag) => {
         return tag.id == props.list.id;
       });
-      console.log(findvalue, "??");
       if (findvalue) {
         ischeck.value = true;
       } else {
@@ -50,7 +76,7 @@ export default defineComponent({
       if (route.name === "Home") ischeck.value = false;
       store.commit(MutationTypes.SET_REMOVE_LIST, props.list);
     };
-    return { onSaveList, ischeck, checktagList, onRemoveList };
+    return { ischeck, isActive, format, onSaveList, checktagList, onRemoveList };
   },
   mounted() {
     this.checktagList();
@@ -58,4 +84,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style>
+.sticker-item:hover .user-info {
+  top: 0;
+}
+</style>
