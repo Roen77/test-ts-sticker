@@ -19,6 +19,6 @@ export const search = {
 export const keyword = {
   // 키워드 검색
   fetchs(searchData: string, limit: string): AxiosPromise<keywordItem> {
-    return instance.get(`tags/related/${searchData}?api_key=${API_KEY}&limit=${limit}&rating=g`);
+    return axios.post(".netlify/functions/keyword", { searchData, limit });
   },
 };
