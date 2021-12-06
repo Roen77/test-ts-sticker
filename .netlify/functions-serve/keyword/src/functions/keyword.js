@@ -2681,19 +2681,19 @@ var require_axios2 = __commonJS({
   }
 });
 
-// functions/sticker.ts
+// functions/keyword.ts
 __export(exports, {
   handler: () => handler
 });
 var import_axios = __toModule(require_axios2());
 var handler = async (event) => {
   const payload = JSON.parse(event.body);
-  const { searchData, limit, offset } = payload;
+  const { searchData, limit } = payload;
   const instance = await import_axios.default.create({
     baseURL: "https://api.giphy.com/v1/"
   });
   const API_KEY = process.env.VUE_APP_APIKEY;
-  const url = offset ? `stickers/search?api_key=${API_KEY}&q=${searchData}&limit=${limit}&rating=g&lang=ko&offset=${offset}` : `stickers/search?api_key=${API_KEY}&q=${searchData}&limit=${limit}&rating=g&lang=ko}`;
+  const url = `tags/related/${searchData}?api_key=${API_KEY}&limit=${limit}&rating=g`;
   try {
     const { data } = await instance.get(url);
     if (data.meta.status === 400 || data.meta.status === 404) {
@@ -2717,4 +2717,4 @@ var handler = async (event) => {
 0 && (module.exports = {
   handler
 });
-//# sourceMappingURL=sticker.js.map
+//# sourceMappingURL=keyword.js.map

@@ -23,7 +23,7 @@
       검색
     </button>
   </form>
-  <div class="search-list bd" v-if="!!keywordList.length">
+  <div class="search-list bd" v-if="!!keywordList.length && !loading">
     <h3>추천 검색어</h3>
     <li
       @click="onKeywordClick(keyword)"
@@ -53,6 +53,7 @@ export default defineComponent({
     const filterData = ref(["10", "20", "30"]);
     const searachInputChk = computed(() => search.value.length === 0);
     const keywordList = computed(() => store.state.keywordsList);
+    const loading = computed(() => store.state.loading);
 
     const fetchList = (inputValue: string) => {
       store.dispatch(ActionTypes.FETCH_SEARCH, {
@@ -82,7 +83,7 @@ export default defineComponent({
         });
       }
       getKeywordList();
-    }, 300);
+    }, 200);
 
     const onKeywordClick = (inputKeyword: keywordType) => {
       fetchList(inputKeyword.name);
@@ -101,6 +102,7 @@ export default defineComponent({
       keywordList,
       currentSearch,
       onInput,
+      loading,
       getSearchList,
       getKeywordList,
       onKeywordClick,

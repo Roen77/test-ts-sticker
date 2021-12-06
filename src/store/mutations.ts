@@ -14,14 +14,13 @@ export type Mutations<S = State> = {
   [MutationTypes.SET_SAVE_LIST](state: S, payload: sticker): void;
 };
 export const mutations: MutationTree<State> & Mutations = {
+  // 공통으로 state 업데이트하는 mutation
   [MutationTypes.SET_STATE](state, payload) {
-    // (Object.keys(payload) as Array<keyof typeof payload>).forEach((key: keyof State) => {
-    //   state[key] = payload[key];
-    // });
     Object.keys(payload).forEach((key) => {
       state[key] = payload[key];
     });
   },
+  // 즐겨찾기 한 데이터 로컬스토리지에 저장
   [MutationTypes.SET_SAVE_LIST](state, payload) {
     const index = state.tagList.findIndex((sticker) => sticker.id === payload.id);
     if (index !== -1) return;
@@ -29,6 +28,7 @@ export const mutations: MutationTree<State> & Mutations = {
     const parsed = JSON.stringify(state.tagList);
     localStorage.setItem(STORAGE_KEY, parsed);
   },
+  // 즐겨찾기 한 데이터 로컬스토리지에서 삭제
   [MutationTypes.SET_REMOVE_LIST](state, payload) {
     const index = state.tagList.findIndex((sticker) => sticker.id === payload.id);
     state.tagList.splice(index, 1);

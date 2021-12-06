@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="search-header en">sticker 검색</h3>
-    <SearchForm />
+    <SearchForm :loading="loading" />
     <SearchList :lists="lists" :loading="loading" />
     <MoreSearchItem v-if="!!lists.length" />
   </div>

@@ -8,8 +8,6 @@ import {
 import { State, state } from "./state";
 import { Mutations, mutations } from "./mutations";
 import { Actions, actions } from "./actions";
-import { Getters, getters } from "./getters";
-
 export type Store = Omit<VuexStore<State>, "getters" | "commit" | "dispatch"> & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
     key: K,
@@ -22,30 +20,14 @@ export type Store = Omit<VuexStore<State>, "getters" | "commit" | "dispatch"> & 
     payload?: Parameters<Actions[K]>[1],
     options?: DispatchOptions
   ): ReturnType<Actions[K]>;
-} & {
-  getters: {
-    [K in keyof Getters]: ReturnType<Getters[K]>;
-  };
 };
 
 export const store = createStore({
   plugins: process.env.NODE_ENV === "development" ? [createLogger()] : [],
   state,
-  getters,
   mutations,
   actions,
 });
 export function useStore(): Store {
   return store as Store;
 }
-
-// export default createStore({
-//   state,
-//   mutations,
-//   actions,
-//   getters
-// });
-
-// export function useStore() {
-//   return store as Store
-// }

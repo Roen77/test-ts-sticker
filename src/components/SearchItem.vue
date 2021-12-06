@@ -52,12 +52,14 @@ export default defineComponent({
     const isActive = ref(false);
     const route = useRoute();
 
+    // 설명 포맷
     const format = () => {
       const des = props.list.user && props.list.user.description;
       const desFomat = des.split("");
       if (desFomat.length < 100) return des;
       else return `${desFomat.splice(0, 101).join("")}...`;
     };
+    // 즐겨찾기 했는지 유무 확인
     const checktagList = () => {
       const findvalue = tagList.value.find((tag) => {
         return tag.id == props.list.id;
@@ -68,12 +70,16 @@ export default defineComponent({
         ischeck.value = false;
       }
     };
+    // 즐겨찾기 저장(로컬 스토리지에 저장)
     const onSaveList = () => {
       ischeck.value = true;
+      // mutations을 사용하여 데이터 저장
       store.commit(MutationTypes.SET_SAVE_LIST, props.list);
     };
+    // 즐겨찾기 삭제(로컬 스토리지에서 삭제)
     const onRemoveList = () => {
       if (route.name === "Home") ischeck.value = false;
+      // mutations을 사용하여 데이터 삭제
       store.commit(MutationTypes.SET_REMOVE_LIST, props.list);
     };
     return { ischeck, isActive, format, onSaveList, checktagList, onRemoveList };

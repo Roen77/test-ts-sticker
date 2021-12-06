@@ -35,18 +35,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style>
-.main-list {
-  position: relative;
-}
-.loading-bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(221, 221, 221, 0.712);
-  z-index: 102;
-}
-</style>

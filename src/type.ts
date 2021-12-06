@@ -1,9 +1,10 @@
+// 이미지 정보
 export type ImageItem = {
   original: {
     url: string;
   };
 };
-
+// 사용자 정보
 export type userInfo = {
   avatar_url: string;
   banner_image: string;
@@ -16,6 +17,7 @@ export type userInfo = {
   website_url: string;
   is_verified: boolean;
 };
+// 검색 시 가져온 데이터 타입 정보
 export type sticker = {
   type: string;
   id: string;
@@ -24,26 +26,29 @@ export type sticker = {
   images: ImageItem;
   user: userInfo;
 };
+// 검색 시 가져온 페이지 정보
 export type paginationInfo = {
   total_count: number;
   count: number;
   offset: number;
 };
-
+// 검색 시 가져온 페이지 메타 정보
 export type metaInfo = {
   status: number;
   msg: string;
   response_id: string;
 };
-
+// 검색 시 가져온 데이터 리스트
 export type stickerItem = {
   data: sticker[];
   pagination: paginationInfo;
   meta: metaInfo;
 };
+// 추천 검색시 가져온 데이터
 export type keywordType = {
   name: string;
 };
+// 추천 검색시 가져온 데이터 리스트
 export type keywordItem = {
   data: keywordType[];
 };
