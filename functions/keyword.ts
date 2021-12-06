@@ -6,7 +6,7 @@ const handler: Handler = async (event) => {
   const instance = await axios.create({
     baseURL: "https://api.giphy.com/v1/",
   });
-  const API_KEY = "3veitOn3rVMzPMduGVEOxl31SHXXSfc1";
+  const API_KEY = process.env.VUE_APP_APIKEY;
   const url = `tags/related/${searchData}?api_key=${API_KEY}&limit=${limit}&rating=g`;
   try {
     const { data } = await instance.get(url);
